@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client/react';
 import { ArrowLeft, Edit2, Save, X, Mail, Phone, Building2, Briefcase } from 'lucide-react';
 import { GET_CONTACT, UPDATE_CONTACT } from '@/graphql/queries';
 import { LifecycleStage } from '@shared/index';
@@ -35,7 +35,7 @@ const ContactDetailPage: React.FC = () => {
     },
   });
 
-  const contact = data?.contact;
+  const contact = (data as any)?.contact;
 
   const startEditing = () => {
     if (!contact) return;

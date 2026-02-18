@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client/react';
 import {
   Plus,
   Phone,
@@ -102,7 +102,7 @@ const ActivitiesPage: React.FC = () => {
     });
   };
 
-  const activities: ActivityItem[] = data?.recentActivities ?? [];
+  const activities: ActivityItem[] = (data as any)?.recentActivities ?? [];
   const filteredActivities =
     typeFilter === 'ALL'
       ? activities

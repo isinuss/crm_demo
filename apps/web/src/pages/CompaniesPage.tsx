@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client/react';
 import { Plus, Search, Building2, Trash2 } from 'lucide-react';
 import { GET_COMPANIES, CREATE_COMPANY, DELETE_COMPANY } from '@/graphql/queries';
 import Card from '@/components/ui/Card';
@@ -110,7 +110,7 @@ const CompaniesPage: React.FC = () => {
     },
   ];
 
-  const companies: CompanyRow[] = data?.companies ?? [];
+  const companies: CompanyRow[] = (data as any)?.companies ?? [];
 
   return (
     <div className="space-y-4">

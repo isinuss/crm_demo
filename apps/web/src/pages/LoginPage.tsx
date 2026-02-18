@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client/react';
 import { LOGIN, REGISTER } from '@/graphql/queries';
 import { useAuth } from '@/hooks/useAuth';
 import Button from '@/components/ui/Button';
@@ -18,19 +18,19 @@ const LoginPage: React.FC = () => {
   const { setAuth } = useAuth();
 
   const [login, { loading: loginLoading }] = useMutation(LOGIN, {
-    onCompleted: (data) => {
+    onCompleted: (data: any) => {
       setAuth(data.login.token, data.login.user);
       navigate('/');
     },
-    onError: (err) => setError(err.message),
+    onError: (err: any) => setError(err.message),
   });
 
   const [register, { loading: registerLoading }] = useMutation(REGISTER, {
-    onCompleted: (data) => {
+    onCompleted: (data: any) => {
       setAuth(data.register.token, data.register.user);
       navigate('/');
     },
-    onError: (err) => setError(err.message),
+    onError: (err: any) => setError(err.message),
   });
 
   const loading = loginLoading || registerLoading;

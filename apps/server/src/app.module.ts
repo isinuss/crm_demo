@@ -18,7 +18,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
       isGlobal: true,
     }),
     TypeOrmModule.forRoot({
-      type: 'sqlite',
+      type: 'better-sqlite3',
       database: join(__dirname, '..', 'crm.sqlite'),
       synchronize: true,
       autoLoadEntities: true,

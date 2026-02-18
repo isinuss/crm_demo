@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { Users, Building2, DollarSign, TrendingUp } from 'lucide-react';
 import { GET_DASHBOARD_STATS } from '@/graphql/queries';
 import Card from '@/components/ui/Card';
@@ -17,7 +17,7 @@ const activityTypeColors: Record<string, 'blue' | 'green' | 'yellow' | 'purple' 
 const DashboardPage: React.FC = () => {
   const { data, loading } = useQuery(GET_DASHBOARD_STATS);
 
-  const stats = data?.dashboardStats;
+  const stats = (data as any)?.dashboardStats;
 
   const kpiCards = [
     {

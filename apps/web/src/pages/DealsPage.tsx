@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client/react';
 import { Plus, DollarSign } from 'lucide-react';
 import { GET_DEALS, CREATE_DEAL, UPDATE_DEAL } from '@/graphql/queries';
 import { DealStage } from '@shared/index';
@@ -123,7 +123,7 @@ const DealsPage: React.FC = () => {
     e.preventDefault();
   };
 
-  const deals: DealItem[] = data?.deals ?? [];
+  const deals: DealItem[] = (data as any)?.deals ?? [];
 
   const dealsByStage = Object.values(DealStage).reduce(
     (acc, stage) => {

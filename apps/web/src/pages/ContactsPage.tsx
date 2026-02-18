@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client/react';
 import { Plus, Search, Users, Trash2 } from 'lucide-react';
 import { GET_CONTACTS, CREATE_CONTACT, DELETE_CONTACT } from '@/graphql/queries';
 import { LifecycleStage } from '@shared/index';
@@ -136,7 +136,7 @@ const ContactsPage: React.FC = () => {
     },
   ];
 
-  const contacts: ContactRow[] = data?.contacts ?? [];
+  const contacts: ContactRow[] = (data as any)?.contacts ?? [];
 
   return (
     <div className="space-y-4">
